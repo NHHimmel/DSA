@@ -103,17 +103,6 @@ class CircularDoublyLinkedList:
             
          
 
-
-         
-
-
-
-   
-
-
-         
-
-
 if __name__ == "__main__":
    cdll_1 = CircularDoublyLinkedList()
 
