@@ -55,11 +55,12 @@ class BinaryTree:
       result_left = BinaryTree.inOrderHelper(head.left,key)
       if result_left:
          return True
-      
-      
-      return BinaryTree.inOrderHelper(head.right,key)
+
       if head.data==key:
          return True
+      
+      return BinaryTree.inOrderHelper(head.right,key)
+    
 
    
    def display(self): #pre Order traversal
