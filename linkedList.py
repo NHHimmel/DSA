@@ -166,6 +166,7 @@ if __name__ == "__main__":
     first = Node(2)
     second = Node(6)
     third = Node(8)
+    fourth = Node(9)
     first.next = second
     second.next = third
 
@@ -200,7 +201,7 @@ if __name__ == "__main__":
         while(middle>1):
             curr = curr.next
             middle-=1
-        print(curr.data)
+        return curr
 
 
     getLen(first)
