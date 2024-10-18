@@ -30,12 +30,28 @@ class BinarySearchTree:
                else: var.put(curr.right)
             else: return self.root
 
+# insertion using recursion
+   def insertRecur(self, data):
+      self.iRHelper(self.root, data)
+
+   @staticmethod
+   def iRHelper(root, data):
+      if not root:
+         return Node(data)
+      if root.data == data:
+         return root
+      elif root.data > data:
+         root.left = BinarySearchTree.iRHelper(root.left,data)
+      else:
+         root.right = BinarySearchTree.iRHelper(root.right, data)
+      return root
+
    def display(self):
       self.displayHelper(self.root)
       print()
 
    @staticmethod
-   def displayHelper(root):
+   def displayHelper(root): #inorder traverse
       if root:
          BinarySearchTree.displayHelper(root.left)
          print(root.data,end=" ")
@@ -49,8 +65,6 @@ if __name__ == "__main__":
    bst.insertKey(9)
    bst.insertKey(17)
    bst.insertKey(5)
+   bst.insertRecur(8)
 
    bst.display()
-
-
-   
