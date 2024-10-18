@@ -57,6 +57,40 @@ class BinarySearchTree:
          print(root.data,end=" ")
          BinarySearchTree.displayHelper(root.right)
 
+   def successor(self, node):
+      curr = node.right
+      while curr and curr.left:
+         curr = curr.left
+      return curr
+
+   def predecessor(self, node):
+      curr = node.left
+      while curr and curr.right:
+         curr = curr.right
+      return curr
+
+   def delete(self, key):
+      self.deleteHelper(self.root,key)
+
+   @staticmethod
+   def deleteHelper(root,key):
+      # base case 1 - finished searching, no similar key found
+      if not root:
+         return root
+      #
+      elif key < root.data:
+         root.left = BinarySearchTree.deleteHelper(root.left, key)
+      elif key > root.data:
+         root.right = BinarySearchTree.deleteHelper(root.right, key)
+      else:
+         if not root.left: return root.right
+         elif not root.right: return root.left
+         else:
+            successor = self.successor(root)
+            root.data = successor.data
+            root.right = BinarySearchTree.deleteHelper(root.right,successor.data)
+      return None
+         
 
 if __name__ == "__main__":
    bst = BinarySearchTree()
@@ -66,5 +100,7 @@ if __name__ == "__main__":
    bst.insertKey(17)
    bst.insertKey(5)
    bst.insertRecur(8)
+
+   bst.delete(17)
 
    bst.display()
